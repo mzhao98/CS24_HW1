@@ -1,0 +1,37 @@
+CS:APP3e Practice Problem 2.46, pp.111-112:
+-------------------------------------------
+
+
+A. What is the binary representation of 0.1-x?
+
+	x = 0.00011001100110011001100   First 23 bits of the sequence to the right of the decimal point.
+	0.1 = nonterminating sequence of 0.0001100110011[0011].... repeated
+
+	0.1-x = 0.0001100110011[0011].... - 0.00011001100110011001100
+		  = 0.00011001100110011001100 + [0.000000000000000000000001100110011[0011]....] - 0.00011001100110011001100
+		  = 0 + [0.000000000000000000000001100110011[0011]....]
+
+		  = 0.000000000000000000000001100110011[0011].... where there are 23 0's before the first two 1's.
+
+
+B. What is the approximate decimal value of 0.1-x?
+
+	There are 23 0's before the first two 1's and then the same repeating [0011] sequence as in the 0.1 sequence. This is equivalent to 20 0's before the whole 0.1 sequence. Every binary value in the sequence is shifted down by 2^-20. 
+
+	2^-20 * 0.1 = 9.54 * 10^-8
+
+	The approximate decimal value of 0.1-x is 9.54 * 10^-8.
+
+
+C. Actual time = 100 hrs * 60min/hr * 60 s/min = 360,000 s
+	0.1 s * 10 = 1s * 360,000 = 360,000s
+	(9.54 * 10^-8) * 360,000 * 10 = 0.3433 s
+
+	The difference between actual time and computed time is 0.3433 seconds.
+
+D. 2000 m/s * 360,000 s = 720,000,000 m
+	2000 m/s * 360,000.3433 s = 720,000,686.6 m
+
+	720,000,686.6 m - 720,000,000 m = 686.6 m
+
+	Its prediction was 686.6 meters off.

@@ -1,0 +1,42 @@
+WRITING PROCESSOR CODE STEP BY STEP THOUGHT PROCESS
+
+Here is a document I used to plan out my machine code for writing the branching process in Part 3 #3 of the assignment.
+
+Machine Code in Written form:
+
+0: SUB 0 0 6
+1: ADD 6 0 7
+2: SUB 7 1 7
+3: AND 3 7 4
+4: BNZ 4   7
+5: INCR 6  6
+6: BNZ 5   2
+7: ADD 7 1 7
+8:
+
+
+Machine Code in Binary:
+
+0010 1 000 000 110
+0000 1 000 110 111
+0010 1 111 001 111
+1000 1 011 111 100
+1010 0 100 000111
+0101 1 110 000 110
+1010 0 101 000010
+0000 1 111 001 111
+1111 0 000 000 000
+
+
+Used code I wrote in converter.c file.
+Machine Code in Hexadecimal:
+
+a06    
+237    
+bcf    
+22fc    
+2907    
+1786    
+2942    
+3cf    
+3c00  

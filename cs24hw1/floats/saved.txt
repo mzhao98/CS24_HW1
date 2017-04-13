@@ -1,0 +1,61 @@
+float sum = 0;
+    if (floats->count <= 5){
+        for (unsigned int i = 0; i<5; i++){
+            sum += floats->values[i];
+        }
+    }
+    else{
+        int mid = (int)floor(floats->count/2);
+        FloatArray floatsLower[mid];
+        floatsLower->count = mid;
+        floatsLower->values = malloc(sizeof(float)*floatsLower->count);
+        for (unsigned int i = 0; i<floatsLower->count; i++){
+            floatsLower->values[i] = floats->values[i];
+        }
+
+        int upperSize = floats->count - mid;
+        FloatArray floatsUpper [upperSize];
+        floatsUpper->count = upperSize;
+        floatsUpper->values = malloc(sizeof(float)*floatsUpper->count);
+        for (unsigned int i = 0; i<floatsUpper->count; i++){
+            floatsUpper->values[i] = floats->values[mid+i];
+        }
+        sum = my_fsum(floatsLower) + my_fsum(floatsUpper);
+    }
+    return sum;
+
+
+
+
+
+
+
+    
+
+float sum = 0;
+    int x;
+    int y;
+    int high;
+    int low;
+    FloarArray partials[floats->count];
+    for (int i = 0; i<floats->count; i++){
+        int index = 0;
+        for (int j = 0; j<partials->count; j++){
+            x = floats->values[i];
+            y= partials->values[i];
+            if abs(x)<abs(y){
+                int temp = x;
+                x=y;
+                y=temp;
+            }
+            high = x+y;
+            low = y-(high-x);
+            if (low!=0){
+                partials[index]=low;
+                index++;
+            }
+            x=high;
+        }
+    }
+   
+    return sum;

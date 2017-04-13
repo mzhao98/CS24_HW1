@@ -1,0 +1,18 @@
+A
+0
+0
+80000000
+0
+1
+C7
+A
+
+
+WHAT HAPPENS WHEN 10 DIVIDED BY 0 IS RUN?
+ANSWER:
+
+ When we try to divide 10 by 0, we run into an infinite loop. The computer runs 1000 line-reads of my branching processor code and reaches the max execute time. Then it asks me, the user, if my program has an infinite loop. In my registers, I have a remainder of 10 and a quotient of 199.
+
+ The reason why this happens is I run an infinite loop because whenever I subtract 0 from 10, the remainder stays at 10, so it never decreases. Then the remainder is never negative, so it never breaks the loop to "DONE". Thus, it keeps looping through the while loop. adding 1 to the quotient, resulting in an infinite loop.
+
+ This goes to show that any value divided by 0 is undefined, as we will hit an infinite loop. Thus, we need an error check here to make sure the divisor is nonzero.

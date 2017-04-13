@@ -1,0 +1,25 @@
+Expression:  n = n & (n - 1)
+----------------------------
+
+What does this expression do to n?
+
+	The expression eliminates the rightmost 1 in the binary representation of the number n. 
+	
+
+•
+How does it work?
+
+	The part in parentheses, (n-1), turns the rightmost 1 in the binary n to 1, by way of 
+	carrying in through binary subtraction. Then, n & (n-1) removes all of the 1's that 
+	may have been added to the binary representation of n after the subtraction. n & (n-1) 
+	removes all of the changes to the binary representation that (n-1) made so that the 
+	the removal of the rightmost 1 is the only change made to the binary representation 
+	of n. Thus, the resulting value is the same binary representation as n but with the 
+	rightmost 1 removed. We can use this to count the number of 1's in n by looping 
+	until n is 0. 
+
+•
+How might it provide a faster way to count one-bits in a value?
+
+	This would provide a faster way to count one-bits in a value because we don't have to loop through all of the binary values to the right of the leftmost 1 in n. This method only loops through the while loop as many times as there are 1's in the binary of n. This is more efficient because it lets us make fewer loops. We make exactly as many loops as are needed, which is equal to the exact the count of 1's. In the one_bits method, we'd have to check whether each value was a 0 or 1, but with this expression, we don't have to check if the value in question is a 0 or 1, we automatically know that a 1 is being counted.
+

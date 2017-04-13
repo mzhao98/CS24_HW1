@@ -1,0 +1,36 @@
+Part A:
+-------
+
+1. These results are different because of rounding errors that occur when performing floating point number addition. Because we are adding floats of different sizes, the small magnitude floats take up fewer bits than the larger magnitude floats, which take up more bits. When we add a really large float to a really small float, we lose a bit of precision, because there aren't enough bits in total to be completely accurate, so there is a small rounding error that occurs. Repeated rounding errors lead to imprecision in floating point calculations, which explains the different 3 results. When we add floats in random order, we are likely to add large floats to small floats, which can lead to repeating rounding errors. 
+When we add numbers in increasing order, we reduce the number of rounding errors because each addition is of numbers of similar size, so our answer is more accurate. When we add numbers in decreasing order, we get lots of rounding errors because we are adding increasingly large floats to decreasingly small floats. 
+
+
+2. The increasing-order addition is the most accurate.
+
+When we add numbers in increasing order, we reduce the number of rounding errors because each addition is of numbers of similar size, so our answer is more accurate. As we add an increasingly large sum to increasingly larger numbers, we are still adding similar size floats, which reduces rounding error. When we add numbers in decreasing order, we get lots of rounding errors because we are adding increasingly large floats to decreasingly small floats. The accuracy of the random order one, is dependent on what order the values happen to be in.
+
+
+3. 
+a) A kind of input that would cause large errors in the most accurate method (increasing order magnitutde) is an input that has large gaps between the increasing set of numbers would cause round-off errors, because the large gaps between the sum and the next number would eventually cause some overflow/underflow roundoff errors. 
+b) Also, an input that is a list of a bunch of very small values and a bunch of very large values would cause large errors when the computed sum of the small numbers tries to start adding the very large numbers. This would cause roundoff overflow errors when the number of bits needed for the computation is insufficient.
+c) Another input that would cause large errors is an extremely long list of float numbers because eventually, we will get to large enough sums that adding inputs cannot be performed without losing some bits of accuracy.
+
+
+Part B:
+-------
+
+I implemented both pairwise and partial summation, so I will discuss the accuracy of each approach separately.
+
+
+1. PAIRWISE SUMMATION
+	
+	Pairwise summation reduces the roundoff error by recursively splitting up the computation. It works by recursively splitting the list of floats into two halves, summing each half, and adding the two sums together. The lists are continuously split until the base case is reached. The base case is a threshold list size, which in my function, is 5. Pairwise summation is a divide and conquer approach and it reduces the size of each summation. Where the simple for-loop addition method adds up an hugely increasingly large sum to a small next number, the pairwise summation splits the calculation into a series of small sums. By splitting up into small sums, we also add sums that are roughly similar in magnitude and bit size. Each of these small individual summations does not result in much roundoff error, and since we keep adding roughly similar sized sums, we don't lose much accuracy to roundoff error, making pairwise summation a very accurate approach.
+
+
+
+2. ACCURATE SUMMATION WITH PARTIALS
+
+	Partial summation is an extremely exact, accurate summation approach. It works by calculating and storing the overflow/underflow roundoff error in a separate list. In the separate list, called partials, we store each of the roundoff error values at every step of the summation, and we also add the simple sum (the inaccurate sum as if we had just added the values in the list in order). Thus, in our list of partials, we store the inaccurate sum plus all of the overflow/underflow error. When we add these values all together, we get the exact sum. This method of accurate summation with partials is extremely exact.
+
+
+

@@ -1,0 +1,20 @@
+# Set quotient equal to 0.
+# Subtract dividend from itself and put in quotient register 6.
+a06   
+# Set remainder equal to dividend 
+# Add dividend to 0 and put in remainder register 7.
+237   
+# Subtract remainder from divisor.
+bcf   
+# Bitwise add -80000000 with remainder, put result in register 4.
+22fc
+# If register 4 is negative, then remainder is negative, so branch to last addition step before done.
+2907  
+# Otherwise, add value of 1 to quotient.
+1786   
+# Branch to Register 2 (subtracting remainder - divisor).
+2942    
+# Add divisor to remainder.
+3cf    
+# DONE
+3c00  
